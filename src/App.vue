@@ -1,68 +1,30 @@
-<template>
-  <div id="app">
-    <header id="hd">
-      <div id="circle"><img alt="Pizza logo" src="./assets/pizza_logo.png"></div>
-    </header>
-    <div v-if="active == 1">
-      <div class="process-wrap active-step1">
-        <Steps :steps_n="steps_n" :active="active" />
-      </div>
-      <Order :count="active" @Next="active = $event"/>
-    </div>
-    <div v-else-if="active == 2">
-      <div class="process-wrap active-step1">
-        <Steps :steps_n="steps_n" :active="active" />
-      </div>
-      <div id="pizza">
-        <Panel />
-      </div>
-      <Order :count="active" @Next="active = $event"/>
-    </div>
-    <div v-else-if="active == 3">
-      <div class="process-wrap active-step1">
-        <Steps :steps_n="steps_n" :active="active" />
-      </div>
-      <div id="pizza">
-        Drinks!
-      </div>
-      <Order :count="active" @Next="active = $event"/>
-    </div>
-    <div v-else-if="active == 4">
-      <div class="process-wrap active-step1">
-        <Steps :steps_n="steps_n" :active="active" />
-      </div>
-      <div id="pizza">
-        Burgers!
-      </div>
-      <Order :count="active" @Next="active = $event"/>
-    </div>
-    <div v-else>
-      ALL DONE.
-    </div>
-  </div>
-</template>
-
 <script>
 import Steps from './layouts/Steps.vue'
-import Order from './layouts/getStarted.vue'
-import Panel from './layouts/Panel.vue'
 
 export default {
   name: 'App',
   data(){
     return {
-      steps_n: ['Order', 'Pizza', 'Drinks', 'Burgers'],
-      active: 1
+      steps_n: ['Order', 'Pizza', 'Drinks', 'Burgers']
     }
   },
   components: {
-    Steps,
-    Order,
-    Panel
+    Steps
   }
-}
 
+}
 </script>
+
+<template>
+  <div id="app">
+    <header id="hd">
+      <div id="circle"><img alt="Pizza logo" src="./assets/pizza_logo.png"></div>
+    </header>
+    <div>
+      <Steps :steps_n="steps_n" />
+    </div>
+  </div>
+</template>
 
 <style scoped>
 #app {
