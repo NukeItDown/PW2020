@@ -2,30 +2,14 @@
 import { mapMutations } from "vuex";
 export default {
   data() {
-    return {};
+    return {
+    };
   },
   props: ["products", "category", "foodIngred"],
   methods: {
     ...mapMutations(["addFood"]),
     addToOrder(value, category, foodIngred) {
       this.addFood({ foodData: value, type: category, ingred: foodIngred });
-    },
-    dropEditMenu: function(event) {
-      if (event.target.classList.contains("dropped")) {
-        event.target.classList.remove("dropped");
-        document.querySelector(".editMenu-" + event.target.id).style.display =
-          "none";
-      } else {
-        event.target.classList.add("dropped");
-        document.querySelector(".editMenu-" + event.target.id).style.display =
-          "block";
-      }
-    },
-    addAmount(value) {
-      if (value.count < value.max) value.count++;
-    },
-    minusAmount(value) {
-      if (value.count > 0) value.count--;
     },
     setDefault(elem) {
       for (let el in elem) {
@@ -53,7 +37,7 @@ export default {
 
 <template>
   <div id="panel">
-    <div class="product-card" v-for="(value, index) in products" :key="value.name">
+    <div class="product-card" v-for="value in products" :key="value.name">
       <header>
         <img src="../assets/menu_pizza/pepperoni.jpg" />
         <h1>{{ value.name }}</h1>
@@ -62,15 +46,7 @@ export default {
       <div class="product-ingr">
         <p>{{ value.igrediens }}</p>
         <button class="cart" @click.prevent="addToOrder(value,category)">Add</button>
-        <button class="edit" :id="index" @click.prevent="dropEditMenu">Edit</button>
-        <div :class="'igredList editMenu-'+ index">
-          <div class="ingred" v-for="(elem) in value.igred" :key="value.name+elem.name">
-            {{elem.name}}
-            <div class="minus" @click.prevent="minusAmount(elem)">&minus;</div>
-            {{elem.count}}
-            <div class="plus" @click.prevent="addAmount(elem)">&plus;</div>
-          </div>
-        </div>
+        <Edit :ingList="value"></Edit>
       </div>
     </div>
   </div>
