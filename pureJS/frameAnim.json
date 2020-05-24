@@ -1,0 +1,14 @@
+{
+    "animHero":{
+        "walkRight":{
+            "walkRight_1":"textures/hero/hero_right_1.png",
+            "walkRight_2":"textures/hero/hero_right_2.png"
+        },
+        "walkLeft":{
+            "walkLeft_1":"textures/hero/hero_left_1.png",
+            "walkLeft_2":"textures/hero/hero_left_2.png"
+        },
+        "stay":"textures/hero/hero_static.png",
+        "jump":"textures/hero/jump.png"
+    }
+}

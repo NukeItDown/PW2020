@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device, initial-scale=1.0">
+</head>
+<body>
+   
+    <canvas id="front">
+        
+    </canvas>
+    <style type="text/css">
+        body{
+            background: url("./textures/bk.png") no-repeat fixed center;
+            background-size:cover;
+            margin: 0;
+            overflow-y: hidden;
+        }
+        canvas{
+            border:1vh solid gray;
+            image-rendering: pixelated;
+            display: block;
+            margin: auto;
+            height: 100vh;
+        }
+        svg{
+            position: absolute;
+            display: hidden;
+            height: 100vh;
+            left:50%;
+            top:80%;
+            transform: translate(-50%,-50%);
+        }
+        svg rect{
+            margin-left:100;
+            display: block;
+            height: 35vh;
+            width: 35vh;
+        }
+        svg text{
+            font-size: 10vh;
+            font-family: 'Strange';
+        }
+        @font-face {
+            font-family: 'Strange';
+            src: url('./font/Strange.ttf');
+        }
+        
+    </style>
+</body>
+<script type="module" src="main.js"></script>     
